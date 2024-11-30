@@ -1,7 +1,10 @@
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../../../../constans.dart';
+import '../../../../home/presentation/views/home_view.dart';
 import 'sliding_text.dart';
 
 class SplashViewbody extends StatefulWidget {
@@ -63,11 +66,10 @@ class _SplashViewbodyState extends State<SplashViewbody>
     Future.delayed(
       const Duration(seconds: 2),
       () {
-        // Get.to(() => const HomeView(),
-        //     // calculations
-        //     transition: Transition.fade,
-        //     duration: kTranstionDuration);
-
+        Get.to(() => const HomeView(),
+            // calculations
+            transition: Transition.fade,
+            duration: kTranstionDuration);
       },
     );
   }
