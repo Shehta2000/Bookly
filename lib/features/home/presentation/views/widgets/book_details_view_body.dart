@@ -1,8 +1,11 @@
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 import 'Custom_Book_Details_App_Bar.dart';
+import 'books_action.dart';
 import 'custom_book_item.dart';
+import 'rating_book_details.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({super.key});
@@ -32,32 +35,13 @@ class BookDetailsViewBody extends StatelessWidget {
         const SizedBox(
           height: 16,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.star,
-              color: Color(0XFFFFDD4F),
-              size: 26,
-            ),
-            const SizedBox(
-              width: 3,
-            ),
-            const Text(
-              '4.8',
-              style: Styles.textStyle16,
-            ),
-            const SizedBox(
-              width: 5,
-            ),
-            Text(
-              '(2520)',
-              style:
-                  Styles.textStyle14.copyWith(color: const Color(0XFF707070)),
-            )
-          ],
-        )
+           const RatingDetailsBooks(),
+           const SizedBox(height: 37,),
+            const BooksAction(),
+
       ],
     );
   }
 }
+
+
