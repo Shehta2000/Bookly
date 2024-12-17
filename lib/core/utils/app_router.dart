@@ -5,31 +5,28 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/home/presentation/views/book_details_view.dart';
 
-abstract class AppRouter {  //  يعني مش هينفع اعمله اكسيس في اي حتة تانية 
- static const  kHomeView = '/homeView'; 
-  static const  kBookDetailsView = '/BookDetailsView'; 
-    static const  kSearchView = '/searchView'; 
+abstract class AppRouter {
+  //  يعني مش هينفع اعمله اكسيس في اي حتة تانية
+  static const kHomeView = '/homeView';
+  static const kBookDetailsView = '/BookDetailsView';
+  static const kSearchView = '/searchView';
 
-
-  static final  GoRouter router = GoRouter(
-  routes: [
+  static final GoRouter router = GoRouter(routes: [
     GoRoute(
       path: '/',
-      builder: ( context,  state) => const  SplashView(),
+      builder: (context, state) => const SplashView(),
     ),
-     GoRoute(
+    GoRoute(
       path: '/searchView',
-      builder: ( context,  state) => const  SearchView(),
+      builder: (context, state) => const SearchView(),
     ),
-     GoRoute(
+    GoRoute(
       path: kHomeView,
-      builder: ( context,  state) => const  HomeView(),
+      builder: (context, state) => const HomeView(),
     ),
-     GoRoute(
+    GoRoute(
       path: kBookDetailsView,
-      builder: ( context,  state) => const  BookDetailsView(),
+      builder: (context, state) => const BookDetailsView(),
     )
-  ]
-  );
-      }
- 
+  ]);
+}

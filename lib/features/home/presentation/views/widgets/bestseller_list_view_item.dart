@@ -13,8 +13,8 @@ class BestSellerListVewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-         GoRouter.of(context).push(AppRouter.kBookDetailsView);
+      onTap: () {
+        GoRouter.of(context).push(AppRouter.kBookDetailsView);
       },
       child: SizedBox(
         height: 150,
@@ -52,21 +52,20 @@ class BestSellerListVewItem extends StatelessWidget {
                     style: Styles.textStyle14,
                   ),
                   const SizedBox(height: 3),
-                     Row(
-                      children: [
-                           Text(
-                    '19.99 €',
-                    style: Styles.textStyle20.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                   const  Spacer( 
-                    flex: 2,
-                   ),
-                  const BookRating()
-                      ],
-                     )  
-                  
+                  Row(
+                    children: [
+                      Text(
+                        '19.99 €',
+                        style: Styles.textStyle20.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Spacer(
+                        flex: 2,
+                      ),
+                      const BookRating()
+                    ],
+                  )
                 ],
               ),
             ),
