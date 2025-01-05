@@ -5,7 +5,7 @@ import '../../../../core/errors/failure.dart';
 import '../models/book_model/book_model.dart';
 import 'home_repo.dart';
 
-class HomeRepoImpl implements HomeRepo {
+ class HomeRepoImpl implements HomeRepo {
   final ApiService apiService;
 
   HomeRepoImpl(this.apiService);
@@ -14,9 +14,7 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
     try {
       var data = await apiService.get(
-        endpoint:
-            'volumes?Filtering=free-ebooks&Sorting=newest&q=subject:programming',
-      );
+          endpoint: 'volumes?Filtering=free-ebooks&Sorting=newest&q=subject:programming',);
 
       List<BookModel> books = [];
       for (var item in data['items']) {
@@ -24,7 +22,7 @@ class HomeRepoImpl implements HomeRepo {
       }
       return right(books); // Move the return statement outside the loop
     } catch (e) {
-      if (e is DioError) {
+      if(e is DioError) {
         return left(ServerFailure.fromDioError(e));
       }
       return left(ServerFailure(e.toString()));
@@ -32,7 +30,7 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchBestSellerBooks() async {
+  Future<Either<Failure, List<BookModel>>>  fetchFeaturedBooks() async {
     try {
       var data = await apiService.get(
           endpoint: 'volumes?Filtering=free-ebooks&q=subject:programming');
@@ -43,7 +41,7 @@ class HomeRepoImpl implements HomeRepo {
       }
       return right(books); // Move the return statement outside the loop
     } catch (e) {
-      if (e is DioError) {
+      if(e is DioError) {
         return left(ServerFailure.fromDioError(e));
       }
       return left(ServerFailure(e.toString()));
