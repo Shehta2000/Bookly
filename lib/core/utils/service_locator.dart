@@ -10,6 +10,6 @@ getIt.registerSingleton<ApiService>(ApiService(Dio(),),);
 
 getIt.registerSingleton<HomeRepoImpl>(HomeRepoImpl(
   getIt.get<ApiService>()));
-// Alternatively you could write it if you don't like global variables
  
 }
+
