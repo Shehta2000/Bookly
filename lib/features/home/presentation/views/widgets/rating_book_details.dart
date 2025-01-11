@@ -1,10 +1,12 @@
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/styles.dart';
 
 class RatingDetailsBooks extends StatelessWidget {
-  const RatingDetailsBooks({super.key});
-
+  const RatingDetailsBooks({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -18,17 +20,11 @@ class RatingDetailsBooks extends StatelessWidget {
         const SizedBox(
           width: 3,
         ),
-        const Text(
-          '4.8',
-          style: Styles.textStyle16,
+        BookRating(
+          rating: bookModel.volumeInfo.averageRating ?? 0,
+          count: bookModel.volumeInfo.ratingsCount ?? 0,
         ),
-        const SizedBox(
-          width: 5,
-        ),
-        Text(
-          '(2520)',
-          style: Styles.textStyle14.copyWith(color: const Color(0XFF707070)),
-        )
+        
       ],
     );
   }
