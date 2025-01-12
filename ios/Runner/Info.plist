@@ -45,5 +45,11 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
+	<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>https</sring>
+  <string>tel</string>
+</array>
 </dict>
 </plist>
