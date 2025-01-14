@@ -8,18 +8,22 @@ class SimilarBooksSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'You can also like',
-          style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w600),
+    return SingleChildScrollView(
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'You can also like',
+              style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            const SimilarBooksListView()
+          ],
         ),
-        const SizedBox(
-          height: 16,
-        ),
-        const SimilarBooksListView()
-      ],
+      ),
     );
   }
 }

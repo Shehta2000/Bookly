@@ -28,11 +28,11 @@ class BooksAction extends StatelessWidget {
           Expanded(
             child: CustomButton(
               onPressed: () async{
-                luanchCustomUrl(context, "bookModel.volumeInfo.previewLink!");
+                luanchCustomUrl(context, bookModel.volumeInfo.previewLink!);
               },
               text: getText(bookModel),//bookModel.volumeInfo.previewLink==null?'Not Available':'Preview(),
               textColor: Colors.white,
-              backgroundColor:const  Color(0xffEF8262),
+              backgroundColor:const Color.fromARGB(255, 226, 91, 19),
               borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(16),
                   bottomRight: Radius.circular(16)),
