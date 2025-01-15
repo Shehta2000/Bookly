@@ -1,4 +1,6 @@
 import 'package:bookly_app/features/home/presentation/views/home_view.dart';
+import 'package:bookly_app/features/login/login_screen.dart';
+import 'package:bookly_app/features/onboarding/onboarding_screen.dart';
 import 'package:bookly_app/features/search/views/search_view.dart';
 import 'package:bookly_app/features/splash/presentation/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +17,10 @@ abstract class AppRouter {
   static const kHomeView = '/homeView';
   static const kBookDetailsView = '/BookDetailsView';
   static const kSearchView = '/searchView';
+  static const kLoginScreen = '/LoginScreen';
+  static const kOnboardingScreen = '/LoginScreen';
+
+
 
   static final GoRouter router = GoRouter(routes: [
     GoRoute(
@@ -22,8 +28,16 @@ abstract class AppRouter {
       builder: (context, state) => const SplashView(),
     ),
      GoRoute(
+      path: kOnboardingScreen,
+      builder: (context, state) => const OnboardingScreen(),
+    ),
+     GoRoute(
         path: kSearchView,
         builder: (context, state) => const SearchView(),
+      ),
+      GoRoute(
+        path: kSearchView,
+        builder: (context, state) => const LoginScreen(),
       ),
     GoRoute(
       path: kHomeView,

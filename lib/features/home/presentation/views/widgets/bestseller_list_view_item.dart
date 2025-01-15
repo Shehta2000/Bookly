@@ -15,25 +15,43 @@ class BestSellerListVewItem extends StatelessWidget {
     super.key,
     required this.bookModel,
   });
+
   final BookModel bookModel;
+
   @override
   Widget build(BuildContext context) {
+    final String imageUrl =
+        bookModel.volumeInfo.imageLinks?.thumbnail ?? 'https://via.placeholder.com/150';
+    final String title = bookModel.volumeInfo.title ?? 'No Title Available';
+    final String author = (bookModel.volumeInfo.authors?.isNotEmpty ?? false)
+        ? bookModel.volumeInfo.authors![0]
+        : 'Unknown Author';
+    final num rating = bookModel.volumeInfo.averageRating ?? 0;
+    final int ratingsCount = bookModel.volumeInfo.ratingsCount ?? 0;
+
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsView , extra: bookModel);
+        // Ensure book details can handle null safely
+        if (bookModel.volumeInfo.title == null || bookModel.volumeInfo.authors == null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('This book has incomplete details')),
+          );
+        } else {
+          GoRouter.of(context).push(AppRouter.kBookDetailsView, extra: bookModel);
+        }
       },
       child: SizedBox(
         height: 150,
         child: Row(
           children: [
-             CustomBookImage(imageUrl: bookModel.volumeInfo.imageLinks!.thumbnail),
+            CustomBookImage(imageUrl: imageUrl),
             const SizedBox(width: 30),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    bookModel.volumeInfo.title!,
+                    title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle20.copyWith(
@@ -41,8 +59,8 @@ class BestSellerListVewItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 3),
-                   Text(
-                    bookModel.volumeInfo.authors![0],
+                  Text(
+                    author,
                     style: Styles.textStyle14,
                   ),
                   const SizedBox(height: 3),
@@ -54,13 +72,11 @@ class BestSellerListVewItem extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const Spacer(
-                        flex: 2,
+                      const Spacer(flex: 2),
+                      BookRating(
+                        rating: rating.round(),
+                        count: ratingsCount,
                       ),
-                        BookRating(
-                        rating: bookModel.volumeInfo.averageRating?.round() ?? 0,
-                        count: bookModel.volumeInfo.ratingsCount?? 0,
-                      )
                     ],
                   )
                 ],
