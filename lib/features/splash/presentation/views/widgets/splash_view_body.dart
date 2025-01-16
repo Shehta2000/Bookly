@@ -1,8 +1,10 @@
 import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/assets.dart';
+import 'package:bookly_app/features/onboarding/onboarding_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../constans.dart';
 import '../../../../home/presentation/views/home_view.dart';
@@ -25,12 +27,13 @@ class _SplashViewbodyState extends State<SplashViewbody>
     super.initState();
     initSlidingAnimation();
 
-    navigateToHome();
+     _navigateToNextScreen();
   }
 
   @override
   void dispose() {
     super.dispose();
+
 
     animationController.dispose();
   }
@@ -62,17 +65,25 @@ class _SplashViewbodyState extends State<SplashViewbody>
 
     animationController.forward();
   }
+  
+  
 
-  void navigateToHome() {
-    Future.delayed(
-      const Duration(seconds: 2),
-      () {
-        // Get.to(() => const HomeView(),
-        //     // calculations
-        //     transition: Transition.fade,
-        //     duration: kTranstionDuration);
-        GoRouter.of(context).push(AppRouter.kOnboardingScreen);
-      },
-    );
+Future<void> _navigateToNextScreen() async {
+  try {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool? isOnboardingCompleted = prefs.getBool('onboarding_completed');
+
+    // Simulate a delay for the splash screen
+    await Future.delayed(const Duration(seconds: 2));
+
+    if (isOnboardingCompleted == null || !isOnboardingCompleted) {
+      GoRouter.of(context).replace(AppRouter.kOnboardingScreen);
+    } else {
+      GoRouter.of(context).replace(AppRouter.kHomeView);
+    }
+  } catch (e) {
+    print("Error loading preferences: $e"); // Handle errors
   }
+}
+
 }

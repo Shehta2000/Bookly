@@ -31,6 +31,10 @@ abstract class AppRouter {
       path: kOnboardingScreen,
       builder: (context, state) => const OnboardingScreen(),
     ),
+    GoRoute(
+      path: kHomeView,
+      builder: (context, state) => const HomeView(),
+    ),
      GoRoute(
         path: kSearchView,
         builder: (context, state) => const SearchView(),
@@ -39,10 +43,7 @@ abstract class AppRouter {
         path: kSearchView,
         builder: (context, state) => const LoginScreen(),
       ),
-    GoRoute(
-      path: kHomeView,
-      builder: (context, state) => const HomeView(),
-    ),
+    
     GoRoute(
       path: kBookDetailsView,
       builder: (context, state) => BlocProvider(
