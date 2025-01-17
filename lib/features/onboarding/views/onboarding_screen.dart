@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/utils/app_router.dart';
+import '../../../core/utils/app_router.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -124,7 +124,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   if (_currentPage == _onboardingData.length - 1) {
                     SharedPreferences prefs = await SharedPreferences.getInstance();
                     await prefs.setBool('onboarding_completed', true);
-                    GoRouter.of(context).replace(AppRouter.kHomeView);
+                    GoRouter.of(context).replace(AppRouter.kWelcomeScreen);
                   } else {
                     _pageController.nextPage(
                       duration: const Duration(milliseconds: 300),
