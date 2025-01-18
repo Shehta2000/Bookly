@@ -1,6 +1,6 @@
 import 'package:bookly_app/features/home/presentation/views/home_view.dart';
-import 'package:bookly_app/features/login/views/login_screen.dart';
-import 'package:bookly_app/features/login/views/register_screen.dart';
+import 'package:bookly_app/features/auth/views/login_screen.dart';
+import 'package:bookly_app/features/auth/views/register_screen.dart';
 import 'package:bookly_app/features/onboarding/views/onboarding_screen.dart';
 import 'package:bookly_app/features/search/views/search_view.dart';
 import 'package:bookly_app/features/splash/presentation/splash_view.dart';
@@ -11,7 +11,7 @@ import '../../features/home/data/models/book_model/book_model.dart';
 import '../../features/home/data/repos/home_repo_impl.dart';
 import '../../features/home/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
 import '../../features/home/presentation/views/book_details_view.dart';
-import '../../features/login/views/welcome_screen.dart';
+import '../../features/auth/views/welcome_screen.dart';
 import 'service_locator.dart';
 
 abstract class AppRouter {
@@ -68,4 +68,5 @@ abstract class AppRouter {
       ),
     )
   ]);
+
 }

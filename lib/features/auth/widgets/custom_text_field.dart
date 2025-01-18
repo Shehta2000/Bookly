@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatefulWidget {
   final String label;
   final bool isPassword;
-  final TextEditingController controller; // إضافة TextEditingController
+  final TextEditingController controller; 
+  final String? Function(String?)? validator; // إضافة TextEditingController
 
   const CustomTextField({
     super.key,
     required this.label,
     this.isPassword = false,
-    required this.controller, // تمرير TextEditingController
+    required this.controller, this.validator, // تمرير TextEditingController
   });
 
   @override
@@ -27,7 +28,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: widget.validator,
       controller: widget.controller, // استخدام TextEditingController
       obscureText: _isPasswordVisible,
       decoration: InputDecoration(

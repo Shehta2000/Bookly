@@ -17,7 +17,7 @@ class CustomUserButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.white,
         minimumSize: const Size(400, 60),
-      ), child: Text(text,style: Styles.textStyle18.copyWith(color: Colors.black),),
+      ), child: Text(text,style: Styles.textStyle30.copyWith(color: Colors.black, fontWeight: FontWeight.w500,fontSize: 30),),
     );
   }
 }

@@ -28,11 +28,14 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  awesome_snackbar_content: ^0.1.5
+  awesome_snackbar_content_new: ^0.1.2
   cached_network_image: ^3.4.1
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
   dio: ^4.0.6
   equatable: ^2.0.7
+  fancy_snackbar: ^0.0.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
@@ -48,8 +51,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
- # إزالة الشفافية من الأيقونة في iOS
-
+# إزالة الشفافية من الأيقونة في iOS
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
