@@ -8,8 +8,7 @@ class AssetsData {
   static const onbarding1 = 'assets/images/onboarding 1.png';
   static const onbarding2 = 'assets/images/Onbarding 2.png';
   static const onbarding3 = 'assets/images/onbarding 3.png';
-
-  static const appIcon = 'assets/images/bookly_icon.png';
+  static const appIcon = 'assets/images/app_icon.png';
 
 
 }

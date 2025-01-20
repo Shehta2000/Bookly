@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- اللون الخلفي للأيقونة -->
+    <color name="ic_launcher_background">#ff100B20</color>  <!-- أو أي لون ترغب به -->
+
+    <!-- اللون الأمامي للأيقونة (إن كنت تستخدم الألوان) -->
+    <color name="ic_launcher_foreground">#ff100B20</color>  <!-- أو أي لون ترغب به -->
+</resources>
