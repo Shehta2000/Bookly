@@ -12,7 +12,8 @@ import '../../../core/utils/app_router.dart';
 import '../widgets/custom_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({super.key, });
+
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -35,6 +36,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
     // Check if the credentials match
     if (username == savedUsername && password == savedPassword) {
+       SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLoggedIn', true);
       // Successful login
        FancySnackbar.show(context, 'Successfully Logged In',
        logo: const Icon(Icons.check, color: Colors.green, size: 32),
