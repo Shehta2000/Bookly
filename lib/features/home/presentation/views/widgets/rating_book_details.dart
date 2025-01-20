@@ -1,9 +1,6 @@
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../core/utils/styles.dart';
-
 class RatingDetailsBooks extends StatelessWidget {
   const RatingDetailsBooks({super.key, required this.bookModel});
   final BookModel bookModel;

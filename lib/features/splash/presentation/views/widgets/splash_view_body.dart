@@ -1,17 +1,13 @@
 import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/assets.dart';
-import 'package:bookly_app/features/onboarding/views/onboarding_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../../../../constans.dart';
-import '../../../../home/presentation/views/home_view.dart';
 import 'sliding_text.dart';
 
 class SplashViewbody extends StatefulWidget {
-  const SplashViewbody({Key? key}) : super(key: key);
+  const SplashViewbody({super.key});
 
   @override
   State<SplashViewbody> createState() => _SplashViewbodyState();
@@ -77,11 +73,14 @@ Future<void> _navigateToNextScreen() async {
     await Future.delayed(const Duration(seconds: 2));
 
     if (isOnboardingCompleted == null || !isOnboardingCompleted) {
+      // ignore: use_build_context_synchronously
       GoRouter.of(context).replace(AppRouter.kOnboardingScreen);
     } else {
+      // ignore: use_build_context_synchronously
       GoRouter.of(context).replace(AppRouter.kHomeView);
     }
   } catch (e) {
+    // ignore: avoid_print
     print("Error loading preferences: $e"); // Handle errors
   }
 }

@@ -1,8 +1,6 @@
 import 'package:url_launcher/url_launcher.dart';
-
 import 'custom_snack_bar.dart';
-
-Future<void> luanchCustomUrl(context, String url) async {
+Future<void> launchCustomUr(context, String? url) async {
   if (url != null) {
     Uri uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {

@@ -1,6 +1,6 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+// ignore_for_file: use_build_context_synchronously
 import 'package:bookly_app/constans.dart';
-import 'package:bookly_app/features/auth/widgets/custom_text_button.dart';
+import 'package:bookly_app/features/auth/widgets/custom_row.dart';
 import 'package:bookly_app/features/auth/widgets/custom_text_field.dart';
 import 'package:bookly_app/features/auth/widgets/custom_user_button.dart';
 import 'package:fancy_snackbar/fancy_snackbar.dart';
@@ -30,23 +30,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final password = _passwordController.text.trim();
     final confirmPassword = _confirmPasswordController.text.trim();
 
-   
     // حفظ بيانات المستخدم في SharedPreferences
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('username', username);
     await prefs.setString('password', password);
-        await prefs.setString('confirmPassword', confirmPassword);
+    await prefs.setString('confirmPassword', confirmPassword);
 
-         // عرض رسالة النجاح
-
-     FancySnackbar.show(context, 'Successfully Registered',
-       logo: const Icon(Icons.check, color: Colors.green, size: 32),
-       seconds: 2
-       );
-       GoRouter.of(context).push(AppRouter.kLoginScreen);
-   
     // عرض رسالة النجاح
-   
+
+    FancySnackbar.show(context, 'Successfully Registered',
+        logo: const Icon(Icons.check, color: Colors.green, size: 32),
+        seconds: 2);
+    GoRouter.of(context).push(AppRouter.kLoginScreen);
+
+    // عرض رسالة النجاح
   }
 
   @override
@@ -104,10 +101,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             if (value == null || value.isEmpty) {
                               return 'Password is required';
                             }
-                            if(value.length<8){
+                            if (value.length < 8) {
                               return 'Password must be at least 8 characters';
                             }
-                            if(_passwordController.text!=_confirmPasswordController.text){
+                            if (_passwordController.text !=
+                                _confirmPasswordController.text) {
                               return 'Passwords don\'t match';
                             }
                             return null;
@@ -122,7 +120,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             if (value == null || value.isEmpty) {
                               return 'Confirm Password is required';
                             }
-                             if(_passwordController.text!=_confirmPasswordController.text){
+                            if (_passwordController.text !=
+                                _confirmPasswordController.text) {
                               return 'Passwords don\'t match';
                             }
                             return null;
@@ -133,7 +132,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         const SizedBox(height: 24),
                         CustomUserButton(
-                           
                           text: 'Register',
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
@@ -141,22 +139,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             }
                           },
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Already have an account?',
-                              style: Styles.textStyle16.copyWith(
-                                fontWeight: FontWeight.w900,
-                                color: Colors.white.withOpacity(0.6),
-                              ),
-                            ),
-                             CustomTextButton(
-                             onPressed: () => GoRouter.of(context).push(AppRouter.kLoginScreen),
-                             text: 'Login',
-                           ),
-                          ],
-                        ),
+                        const SizedBox(height: 16),
+                        const CustomRow(),
                       ],
                     ),
                   ),
@@ -169,5 +153,3 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 }
-
-

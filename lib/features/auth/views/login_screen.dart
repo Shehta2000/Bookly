@@ -1,4 +1,4 @@
-import 'package:awesome_snackbar_content_new/awesome_snackbar_content.dart';
+// ignore_for_file: use_build_context_synchronously
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/features/auth/widgets/custom_text_button.dart';
 import 'package:bookly_app/features/auth/widgets/custom_user_button.dart';
@@ -112,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             if(value!.isEmpty){
                               return 'Enter your Password';
                             } if(value.length<8){
-                              return 'Password must be at least 6 characters';
+                              return 'Password must be at least 8 characters';
                             }
                             return null;
                           },

@@ -1,5 +1,4 @@
 import 'package:bookly_app/core/utils/styles.dart';
-import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/search/presentation/manager/cubit/search_books_cubit.dart';
 import 'package:bookly_app/features/search/views/widgets/custom_search_text_field.dart';
 import 'package:flutter/material.dart';

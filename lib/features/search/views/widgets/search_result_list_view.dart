@@ -1,7 +1,6 @@
 import 'package:bookly_app/features/search/views/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../core/widgets/custom_error_widget.dart';
 import '../../../home/presentation/views/widgets/bestseller_list_view_item.dart';
 import '../../presentation/manager/cubit/search_books_cubit.dart';
@@ -19,7 +18,7 @@ class SearchtListView extends StatelessWidget {
         if (state is SearchInitialState) {
           return const Center(child: Text('Search for a book'));
         } else if (state is SearchSuccessState) {
-          if (state.books == null || state.books.isEmpty) {
+          if (state.books.isEmpty) {
             return const Center(child: Text('No results found'));
           } else {
             return RefreshIndicator(
@@ -35,9 +34,6 @@ class SearchtListView extends StatelessWidget {
                 itemCount: state.books.length,
                 itemBuilder: (context, index) {
                   final book = state.books[index];
-                  if (book == null) {
-                    return const SizedBox(); // Avoid null book items
-                  }
 
                   return BestSellerListVewItem(
                     bookModel: book,
