@@ -37,7 +37,6 @@ class _SplashViewbodyState extends State<SplashViewbody>
       body: Stack(
         children: [
           // خلفية السبلاش
-          
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -68,19 +67,33 @@ class _SplashViewbodyState extends State<SplashViewbody>
   Future<void> _navigateToNextScreen() async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      // التحقق من حالة التسجيل (isLoggedIn)
       bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+      // التحقق من حالة Onboarding (onboarding_completed)
+      bool isOnboardingCompleted = prefs.getBool('onboarding_completed') ?? false;
 
       // تأخير عرض شاشة السبلاش
       await Future.delayed(const Duration(seconds: 2));
 
-      // التنقل بناءً على حالة تسجيل الدخول
-      if (isLoggedIn) {
+      // تحديد الشاشة التي سيذهب إليها المستخدم بناءً على حالته
+      if (!isOnboardingCompleted) {
+        // إذا لم يتم الانتهاء من Onboarding، يتم توجيه المستخدم إلى شاشة Onboarding
         if (mounted) {
-          GoRouter.of(context).replace(AppRouter.kHomeView);
+          GoRouter.of(context).replace(AppRouter.kOnboardingScreen);
         }
       } else {
-        if (mounted) {
-          GoRouter.of(context).replace(AppRouter.kLoginScreen);
+        // إذا كانت Onboarding مكتملة، يتم التوجيه إلى شاشة تسجيل الدخول أو الصفحة الرئيسية
+        if (isLoggedIn) {
+          // إذا كان قد سجل الدخول بنجاح، يذهب إلى الصفحة الرئيسية
+          if (mounted) {
+            GoRouter.of(context).replace(AppRouter.kHomeView);
+          }
+        } else {
+          // إذا لم يكن قد سجل الدخول، يذهب إلى شاشة تسجيل الدخول
+          if (mounted) {
+            GoRouter.of(context).replace(AppRouter.kLoginScreen);
+          }
         }
       }
     } catch (e) {
